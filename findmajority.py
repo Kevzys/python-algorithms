@@ -1,11 +1,21 @@
 def majority(string):
-    m = {}
-
+    letters = []
+    letters_count = []
+    total_count = 0
     for x in string:
-        if x not in m.keys():
-            m.update(x, 1)
+        total_count += 1
+        if x not in letters:
+            letters.append(x)
+            letters_count.append(1)
         else:
-            m[x] +=1
-    print(m)
+            i = letters.index(x)
+            letters_count[i] += 1
 
-majority('aab')
+    m = max(letters_count)
+
+    if m > (total_count / 2):
+        return 'majority exists'
+
+    return 'no majority'
+
+print(majority('aba'))
